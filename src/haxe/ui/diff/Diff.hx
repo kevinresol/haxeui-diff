@@ -28,12 +28,15 @@ class Diff {
 	
 	public static function updateElement(parent:Component, newNode:Node, oldNode:Node, index = 0) {
 		
+		if(parent == null) return;
+		
 		if(oldNode == null) {
 			switch newNode {
 				case null: // do nothing
 				case node: 
-					trace(parent);
-					parent.addComponent(createElement(node));
+					var el = createElement(newNode);
+					parent.addComponent(el);
+					parent.setComponentIndex(el, index);
 			}
 			
 		} else if(newNode == null) {
@@ -78,14 +81,13 @@ class Diff {
 		for(key in props.keys()) setProp(element, key, props.get(key));
 	}
 	
-	static inline function removeProp(element:Component, key:String)
-		setProp(element, key, null);
+	static inline function removeProp(element:Component, name:String)
+		setProp(element, name, null);
 		
-	static function updateProp(element:Component, name, newVal, oldVal) {
+	static function updateProp(element:Component, name:String, newVal:Dynamic, oldVal:Dynamic) {
 		if(newVal == null) {
 			removeProp(element, name);
-		}
-		else if(oldVal == null || newVal != oldVal) {
+		} else if(oldVal == null || newVal != oldVal) {
 			setProp(element, name, newVal);
 		}
 	}
