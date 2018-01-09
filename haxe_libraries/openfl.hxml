@@ -1,0 +1,4 @@
+# @install: lix --silent download "haxelib:openfl#6.5.3" into openfl/6.5.3/haxelib
+-D openfl=6.5.3
+-cp ${HAXESHIM_LIBCACHE}/openfl/6.5.3/haxelib/
+--macro openfl._internal.utils.ExtraParams.include()
