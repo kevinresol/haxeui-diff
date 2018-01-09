@@ -1,0 +1,7 @@
+-cp src
+-main Main
+-js bin/index.js
+
+-lib haxeui-diff
+-lib haxeui-core
+-lib haxeui-html5
