@@ -1,7 +1,6 @@
 package haxe.ui.diff;
 
-typedef Node = {
-	type:String,
-	props:Dynamic,
-	children:Array<Node>,
+enum Node {
+	Node(type:String, props:Dynamic, children:Array<Node>);
+	Widget(inst:Widget);
 }

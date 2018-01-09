@@ -9,20 +9,25 @@ typedef Props = DynamicAccess<Dynamic>;
 
 class Diff {
 	public static inline function h(type:String, props, children):Node {
-		return {type: type, props: props, children: children};
+		return Node(type, props, children);
 	}
 	
 	public static function createElement(node:Node) {
 		
-		var element:Component = switch ComponentClassMap.get(node.type) {
-			case null: throw 'Unknown element "${node.type}"';
-			case className: Type.createInstance(Type.resolveClass(className), []);
+		return switch node {
+			case Widget(widget):
+				widget.initComponent();
+			case Node(type, props, children):
+				var element:Component = switch ComponentClassMap.get(type) {
+					case null: throw 'Unknown element "${type}"';
+					case className: Type.createInstance(Type.resolveClass(className), []);
+				}
+				
+				setProps(element, props);
+				for(child in children) element.addComponent(createElement(child));
+				
+				element;
 		}
-		
-		setProps(element, node.props);
-		for(child in node.children) element.addComponent(createElement(child));
-		
-		return element;
 		
 	}
 	
@@ -52,10 +57,9 @@ class Diff {
 			
 		} else {
 			
-			updateProps(parent.getComponentAt(index), newNode.props, oldNode.props);
-			
 			switch [newNode, oldNode] {
-				case [{children: c1}, {children: c2}]:
+				case [Node(_, p1, c1), Node(_, p2, c2)]:
+					updateProps(parent.getComponentAt(index), p1, p2);
 					var newLength = c1.length;
 					var oldLength = c2.length;
 					var i = 0;
@@ -64,14 +68,16 @@ class Diff {
 						i++;
 					}
 				case _:
-					throw "todo";
 			}
-			
 		}
 	}
 	
 	static inline function changed(node1:Node, node2:Node) {
-		return node1.type != node2.type;
+		return switch [node1, node2] {
+			case [Node(t1, _, _), Node(t2, _, _)]: t1 != t2;
+			case [Widget(w1), Widget(w2)]: w1 != w2;
+			case _: true;
+		}
 	}
 	
 	static inline function setProp(element:Component, name:String, value:Dynamic)
