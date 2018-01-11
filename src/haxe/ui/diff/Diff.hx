@@ -9,7 +9,7 @@ typedef Props = DynamicAccess<Dynamic>;
 
 class Diff {
 	public static inline function h(type:String, props:{}, children:Array<Node>):Node {
-		return Node(type, props, children);
+		return Node(type, props, [for (child in children) if(child != null) child]);
 	}
 	
 	public static function createElement(node:Node) {
