@@ -25,7 +25,7 @@ class Main {
 		var timer = new haxe.Timer(1000);
 		timer.run = function() {
 			var newDom = h('vbox', {}, [
-				h('button', {text: 'Button ' + counter++, onClick: function(event:MouseEvent) trace(event)}, []),
+				h('button', {text: 'Button ' + ++counter, onClick: function(event:MouseEvent) trace(event)}, []),
 				Widget(myComp),
 				counter % 2 == 1 ? h('button', {text: 'Button Extra'}, []) : null,
 				h('grid', {columns: 2}, [
