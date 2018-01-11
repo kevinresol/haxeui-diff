@@ -1,0 +1,7 @@
+-cp src
+-main Main
+-cpp bin/cpp
+
+-lib haxeui-diff
+-lib haxeui-core
+-lib haxeui-pdcurses

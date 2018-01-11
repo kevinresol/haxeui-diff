@@ -1,0 +1,3 @@
+# @install: lix --silent download "https://github.com/back2dos/lix-hxcpp/archive/23b1bf14857c7ddeef05a335e6da42646de840e0.tar.gz" into lix-hxcpp/0.0.0/github/23b1bf14857c7ddeef05a335e6da42646de840e0
+-D lix-hxcpp=0.0.0
+-cp ${HAXESHIM_LIBCACHE}/lix-hxcpp/0.0.0/github/23b1bf14857c7ddeef05a335e6da42646de840e0/src

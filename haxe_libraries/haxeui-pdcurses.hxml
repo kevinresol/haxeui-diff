@@ -1,0 +1,5 @@
+# @install: lix --silent download "https://github.com/haxeui/haxeui-pdcurses/archive/71d7a3a208bf58f4dd30f6764b3bdfc632cd84f5.tar.gz" into haxeui-pdcurses/0.0.1/github/71d7a3a208bf58f4dd30f6764b3bdfc632cd84f5
+-D haxeui-pdcurses=0.0.1
+-cp ${HAXESHIM_LIBCACHE}/haxeui-pdcurses/0.0.1/github/71d7a3a208bf58f4dd30f6764b3bdfc632cd84f5/
+
+-lib hscript
