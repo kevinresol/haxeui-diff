@@ -2,6 +2,8 @@
 
 A proof-of-concept virtual DOM implementation for Haxe UI
 
+![hxwidgets](example/basic/hxwidgets-mac.gif)
+
 ## Examples
 
 ```haxe
