@@ -1,0 +1,11 @@
+# @install: lix --silent download "https://github.com/haxeui/haxeui-hxwidgets/archive/139611377e32ff93acd513db03c882fb0dd019be.tar.gz" into haxeui-hxwidgets/0.0.2/github/139611377e32ff93acd513db03c882fb0dd019be
+-D haxeui-hxwidgets=0.0.2
+-cp ${HAXESHIM_LIBCACHE}/haxeui-hxwidgets/0.0.2/github/139611377e32ff93acd513db03c882fb0dd019be/
+--macro include("hx.widgets")
+
+--macro include("haxe.ui.backend.hxwidgets")
+--macro include("haxe.ui.backend.hxwidgets.behaviours")
+--macro include("haxe.ui.backend.hxwidgets.size")
+
+-lib haxeui-core
+-lib hxWidgets

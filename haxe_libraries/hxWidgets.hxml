@@ -1,0 +1,5 @@
+# @install: lix --silent download "https://github.com/haxeui/hxWidgets/archive/319c9f56c4bf1b4e7481f70522fa5ff3ce8c8020.tar.gz" into hxWidgets/1.0.0/github/319c9f56c4bf1b4e7481f70522fa5ff3ce8c8020
+-D hxWidgets=1.0.0
+-cp ${HAXESHIM_LIBCACHE}/hxWidgets/1.0.0/github/319c9f56c4bf1b4e7481f70522fa5ff3ce8c8020/src
+
+-lib hxcpp

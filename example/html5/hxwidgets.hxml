@@ -1,0 +1,10 @@
+-cp src
+-main Main
+-cpp bin/hxwidgets
+
+-lib haxeui-diff
+-lib haxeui-core
+-lib haxeui-hxwidgets
+-lib hxWidgets
+
+# -D HXCPP_VERBOSE
