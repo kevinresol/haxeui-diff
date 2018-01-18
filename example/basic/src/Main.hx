@@ -59,7 +59,7 @@ class Main {
 		frame.bind(EventType.TIMER, function(_) interval());
 		#else
 		var timer = new haxe.Timer(1000);
-		timer.run = inverval;
+		timer.run = interval;
 		#end
 		
 		#if haxeui_hxwidgets

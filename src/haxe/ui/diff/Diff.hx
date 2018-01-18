@@ -39,32 +39,29 @@ class Diff {
 			switch newNode {
 				case null: // do nothing
 				case node: 
-					var el = createElement(newNode);
-					parent.addComponent(el);
-					parent.setComponentIndex(el, index);
+					parent.addComponentAt(createElement(newNode), index);
 			}
 			
 		} else if(newNode == null) {
 			
-			parent.removeComponent(parent.getComponentAt(index));
+			parent.removeComponentAt(index);
 			
 		} else if(changed(newNode, oldNode)) {
 			
-			parent.removeComponent(parent.getComponentAt(index));
-			var el = createElement(newNode);
-			parent.addComponent(el);
-			parent.setComponentIndex(el, index);
+			parent.removeComponentAt(index);
+			parent.addComponentAt(createElement(newNode), index);
 			
 		} else {
 			
 			switch [newNode, oldNode] {
 				case [Node(_, p1, c1), Node(_, p2, c2)]:
-					updateProps(parent.getComponentAt(index), p1, p2);
+					var el = parent.getComponentAt(index);
+					updateProps(el, p1, p2);
 					var newLength = c1.length;
 					var oldLength = c2.length;
 					var i = 0;
 					while(i < newLength || i < oldLength) {
-						updateElement(parent.getComponentAt(index), c1[i], c2[i], i);
+						updateElement(el, c1[i], c2[i], i);
 						i++;
 					}
 				case _:
